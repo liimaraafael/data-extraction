@@ -3,26 +3,21 @@
 # *** template python ***
 
 """
-Julho de 2020,
+September 2022,
 
-Programa para realizar download do banco de dados INMET.
-
---
-Rafael Corrêa de Lima
-Bolsista de Graduação - LMQA/CEPSRM
-rafael.correa@ufrgs.br
+This code performs data extraction from INMET meteorological stations.
 """
 
-#Importando bibliotecas:
-from math import *      #Importa o pacote de matematica
-import os               #Importa os comandos do linux
-import pandas as pd	#Importa biblioteca de data frames
+#Importing libraries:
+from math import *      
+import os               
+import pandas as pd	
 
-#Interação com o usuário:
+#User interaction:
 print("-"*60)
-print("Programa que realiza download dos dados INMET.\n")
-i=str(input("Entre com a data de inicio [AAAA-MM-DD]: "))
-j=str(input("Entre com a data de fim [AAAA-MM-DD]: "))
+print("Starting to download data from INMET.\n")
+i=str(input("Enter start date [AAAA-MM-DD]: "))
+j=str(input("Enter end date [AAAA-MM-DD]: "))
 
 est_id=['A826','A827','A840','A812','A838','A884','A879','A811','A899','A853','A881',
 'A828','A854','A883','A836','A844','A878','A856','A839','A801','A831','A802','A813','A803',
@@ -67,5 +62,5 @@ for id in est_id:
 	out.to_excel(id+'-'+est_name[n]+'.xlsx')
 	n+=1
 
-print("Fim :D")
+print("Success")
 print("-"*60)
