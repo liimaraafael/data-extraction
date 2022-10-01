@@ -8,6 +8,8 @@ This code performs data extraction from INMET meteorological stations.
 import pandas as pd
 import requests
 
+from MySQL import to_aws
+
 # User interaction:
 print("-" * 60)
 print("Starting to download data from INMET.\n")
@@ -59,7 +61,6 @@ station = {
     "A809": "uruguaiana",
     "A880": "vacaria"
 }
-
 for ID, name in station.items():
     # Request
     req = requests.get("https://apitempo.inmet.gov.br/estacao/" + start_date + "/" + end_date + "/" + ID)
@@ -69,10 +70,15 @@ for ID, name in station.items():
     df['HR_MEDICAO'] = df['HR_MEDICAO'] / 100.
     df = df.set_index('DT_MEDICAO')
 
-    # Save (XLSX and JSON)
-    df.to_excel(ID + "-" + name + ".xlsx")
-    with open(ID + "-" + name + ".json", "w") as outfile:
-        outfile.write(req.text)
+    # Save (XLSX)
+    df.to_excel("data/" + ID + "-" + name + ".xlsx")
+
+    # Save (JSON)
+    open("data/" + ID + "-" + name + ".json", "w").write(req.text)
+
+    if False:  # WARN: For safety, switch to True to execute this line.
+        # Save (AWS)
+        to_aws(df)
 
     # Interaction
     print(ID + "-" + name + " OK!")
