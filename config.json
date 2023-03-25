@@ -1,7 +1,7 @@
 {
-  "host": "database-1.ceohw5e0coor.us-east-1.rds.amazonaws.com",
+  "host": "database-1.cq8stvnbsgmo.us-east-1.rds.amazonaws.com",
   "user": "ufrgs",
-  "pw": "9*4M3*yf",
+  "pw": "ufrgs2022",
   "db": "data_warehouse",
   "table": "extract_data"
 }
