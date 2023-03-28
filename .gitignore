@@ -1,5 +1,9 @@
 /data/
-/data/*
+/rowdata/
+/treated/
 /venv/
 /venv/*
 /.idea/*
+/data/*
+/rowdata/*
+/treated/*
