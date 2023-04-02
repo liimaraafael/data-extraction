@@ -8,7 +8,7 @@ This code performs data extraction from INMET meteorological stations.
 import pandas as pd
 import requests
 
-from MySQL import to_aws
+from MySQL import write_AWS
 
 # User interaction:
 print("-" * 60)
@@ -78,7 +78,7 @@ for ID, name in station.items():
 
     if False:  # WARN: For safety, switch to True to execute this line.
         # Save (AWS)
-        to_aws(df)
+        write_AWS(df, "row_data_rs")
 
     # Interaction
     print(ID + "-" + name + " OK!")
