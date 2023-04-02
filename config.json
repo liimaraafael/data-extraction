@@ -3,5 +3,5 @@
   "user": "ufrgs",
   "pw": "9*4M3*yf",
   "db": "data_warehouse",
-  "table": "extract_data"
+  "table": ["row_data_rs", "row_data_br", "processed_data_rs", "processed_data_br"]
 }
