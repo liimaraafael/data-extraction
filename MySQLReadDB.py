@@ -1,24 +1,7 @@
-import json
+from MySQL import read_AWS
 
-import pandas as pd
-from sqlalchemy import create_engine
+df = read_AWS("row_data_br", "A001")
+print(df.head())
+print(df.count())
 
-conf = json.load(open("config.json", encoding='utf-8'))
-
-
-def read_AWS():
-    engine = create_engine("mysql+mysqlconnector://{user}:{pw}@{host}/{db}"
-                           .format(user=conf.get("user"),
-                                   pw=conf.get("pw"),
-                                   host=conf.get("host"),
-                                   db=conf.get("db")))
-
-    with engine.begin() as conn:
-        query = "SELECT * FROM data_warehouse.extract_data"
-        df = pd.read_sql_query(query, conn)
-
-    return df
-
-
-kevinReiDelas = read_AWS()
-print(kevinReiDelas.head(10))
+df.to_excel("A001.xlsx")
